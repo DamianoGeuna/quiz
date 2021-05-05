@@ -1,13 +1,13 @@
 export class Counter {
 
-    private initial:number;
-    private min:number;
     private max:number;
-    private value:number;
+    private min:number;
+    private initial:number;
 
+    private value:number;
     constructor(initial = 0,min = 0,max = 0){
 
-        this.value = initial;
+        this.value = initial
         this.max = max;
         this.min = min;
         this.initial = initial;
@@ -16,10 +16,9 @@ export class Counter {
         //if(this.max !== null && this.initial > this.max) {throw new Error('initial è maggiore di max')}
     }
 
-    getValue(){
+    getValue() {
         return this.value;
     }
-
     
     increment(){
 
@@ -33,7 +32,7 @@ export class Counter {
 
     decrement(){
        
-        if(this.min === 0) {
+        if(this.min === null) {
             this.value--
         }else if(this.value > this.min ){
             this.value-- 

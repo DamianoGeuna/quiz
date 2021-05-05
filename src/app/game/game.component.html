@@ -1,0 +1,28 @@
+<p>Game Works!</p>
+
+<button (click)="goToPreviousQuestion()"class="btn btn-primary">Previous</button>
+
+<button (click)="goToNextQuestion()"class="btn btn-primary">Next</button>
+
+
+
+
+<pre class="border border-primary">
+    {{question.question}}
+    {{question.category}}
+
+</pre>
+
+<pre>
+
+    {{question | json}}
+
+</pre>
+
+<ul>
+    <li (click) = "setUserAnswer(item)"
+        *ngFor="let item of question.answers">
+        {{item}}
+    </li>
+</ul>
+

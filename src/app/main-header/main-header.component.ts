@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';//sempre dentro nodemodule
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'main-header',
@@ -7,8 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';//sempre dentro nodemod
 })
 export class MainHeaderComponent implements OnInit {
 
-  @Input() public title:string='';
-  @Input() public lead:string='';//vuoto è valore predefinito
+  @Input() public title:string = '';
+  @Input() public lead:string = '';
+  
   constructor() { }
 
   ngOnInit(): void {
