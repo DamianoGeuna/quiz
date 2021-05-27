@@ -8,33 +8,61 @@ import { GameService } from '../services/game.service';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-
-  //è la domanda da rappresentare
-  //game service non ha argomenti nel costruttore
-
-  public question:Question
-
+  // public service:GameService
+  // è la domanda da rappresentare
+  public question!:Question
   constructor(
     public service:GameService
-  ) {
-    this.question = this.service.getCurrentQuestion();
+  ) { 
+    
+    this.service.getResponse().subscribe(() => {
+      
+      this.question = this.service.getCurrentQuestion();
+        
+    }) 
   }
-
   ngOnInit(): void {}
 
   setUserAnswer(clickedUserChoice:string){
-    this.question.userAnswer = clickedUserChoice;
+    console.log("ciao",clickedUserChoice);
+    this.question.userAnswer = clickedUserChoice
     this.question.isDone = true;
-    this.question.isCorrect = this.question.correct_answer === clickedUserChoice;
+    this.question.isCorrect =  this.question.correct_answer === clickedUserChoice
   }
 
   goToNextQuestion(){
-    this.service.getNextQuestions();
-    this.question = this.service.getNextQuestions;
+    console.log("vado avanti");
+    this.service.getNextQuestion()
+    this.question = this.service.getCurrentQuestion()
+
+  }
+  goToPreviusQuestion(){
+    
+    console.log("vado indietro");
+    this.service.getPreviusQuestion()
+    this.question = this.service.getCurrentQuestion()
+
   }
 
-  goToPreviousQuestion(){
-    this.service.getPreviousQuestion();
-    this.question = this.service.getPreviousQuestion;
+  userAnswerHandler(answer:string){
+    console.log("sono fuori dal child",answer);
+  }
+
+  getClass(){
+    return {'bg-secondary':this.question.isDone};
+  }
+
+  getLevel(){
+
+    if(this.question.difficulty=='hard'){
+      return 'text-danger';
+    }
+    else if(this.question.difficulty=='medium'){
+      return 'text-secondary';
+    }
+    else if(this.question.difficulty=='easy'){
+      return 'text-success';
+    }
+    return '';
   }
 }

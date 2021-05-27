@@ -1,31 +1,32 @@
+<div *ngIf="question">
 
-<app-answer-list [list]="question.answers">
+    <h2>{{question.question}}</h2>
+    <div [ngClass]="getLevel()">Difficoltà: {{question.difficulty}}</div>
 
-</app-answer-list>
+    <div class="p-4" [ngClass]="getClass()">
+            
+            <app-answers-list
+            [list]="question.answers"
+            [selected]='question.userAnswer'
+            (onUserAnswer)= "setUserAnswer($event)"></app-answers-list>
 
-<button (click)="goToPreviousQuestion()"class="btn btn-primary">Previous</button>
+            <button (click)="goToPreviusQuestion()" class="btn btn-primary">
+                    previous
+            </button>
 
-<button (click)="goToNextQuestion()"class="btn btn-primary">Next</button>
+            <button (click)="goToNextQuestion()" class="btn btn-primary">
+                    next
+            </button>
 
+    </div>
 
+    <pre>
+            {{question|json}}
+    </pre>
+</div>
 
-<!--<pre class="border border-primary">
-    {{question.question}}
-    {{question.category}}
+<div *ngIf="!question">
 
-</pre>
+    🤷‍♀️ Aspetta un momento
 
-<pre>
-
-    {{question | json}}
-
-</pre>
-
-<ul>
-    <li (click) = "setUserAnswer(item)"
-        *ngFor="let item of question.answers">
-        {{item}}
-    </li>
-</ul>
-
--->
+</div>
