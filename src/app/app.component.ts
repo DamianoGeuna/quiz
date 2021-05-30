@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GameService } from './services/game.service';
 
 @Component({
-  selector: 'game',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Gioca';
-
-  game = new GameService()
+  title = 'Quiz Time!';
 }

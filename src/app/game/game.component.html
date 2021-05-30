@@ -1,32 +1,32 @@
 <div *ngIf="question">
 
-    <h2>{{question.question}}</h2>
-    <div [ngClass]="getLevel()">Difficoltà: {{question.difficulty}}</div>
-
-    <div class="p-4" [ngClass]="getClass()">
-            
-            <app-answers-list
-            [list]="question.answers"
-            [selected]='question.userAnswer'
-            (onUserAnswer)= "setUserAnswer($event)"></app-answers-list>
-
-            <button (click)="goToPreviusQuestion()" class="btn btn-primary">
-                    previous
-            </button>
-
-            <button (click)="goToNextQuestion()" class="btn btn-primary">
-                    next
-            </button>
-
+        <h2>{{question.question}}</h2>
+        <div [ngClass]="getLevel()">Difficoltà: {{question.difficulty}}</div>
+    
+        <div class="p-4" [ngClass]="getClass()">
+                
+                <app-answers-list
+                [list]="question.answers"
+                [selected]='question.userAnswer'
+                (onUserAnswer)= "setUserAnswer($event)"></app-answers-list>
+    
+                <button (click)="goToPreviusQuestion()" class="btn btn-primary">
+                        previous
+                </button>
+    
+                <button (click)="goToNextQuestion()" class="btn btn-primary">
+                        next
+                </button>
+    
+        </div>
+    
+        <pre>
+                {{question|json}}
+        </pre>
     </div>
-
-    <pre>
-            {{question|json}}
-    </pre>
-</div>
-
-<div *ngIf="!question">
-
-    🤷‍♀️ Aspetta un momento
-
-</div>
+    
+    <div *ngIf="!question">
+    
+        🤷‍♀️ Aspetta un momento
+    
+    </div>

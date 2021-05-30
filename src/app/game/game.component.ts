@@ -24,7 +24,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {}
 
   setUserAnswer(clickedUserChoice:string){
-    console.log("ciao",clickedUserChoice);
+    //console.log("sono nel parent",clickedUserChoice);
     this.question.userAnswer = clickedUserChoice
     this.question.isDone = true;
     this.question.isCorrect =  this.question.correct_answer === clickedUserChoice
@@ -41,7 +41,6 @@ export class GameComponent implements OnInit {
     console.log("vado indietro");
     this.service.getPreviusQuestion()
     this.question = this.service.getCurrentQuestion()
-
   }
 
   userAnswerHandler(answer:string){
@@ -49,7 +48,7 @@ export class GameComponent implements OnInit {
   }
 
   getClass(){
-    return {'bg-secondary':this.question.isDone};
+    return {'bg-secondary': this.question.isDone}
   }
 
   getLevel(){
