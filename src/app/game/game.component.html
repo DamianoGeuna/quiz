@@ -10,13 +10,9 @@
                 [selected]='question.userAnswer'
                 (onUserAnswer)= "setUserAnswer($event)"></app-answers-list>
     
-                <button (click)="goToPreviusQuestion()" class="btn btn-primary">
-                        previous
-                </button>
-    
-                <button (click)="goToNextQuestion()" class="btn btn-primary">
-                        next
-                </button>
+                <button (click)="goToPreviusQuestion()" class="btn btn-primary">Previous</button>
+                <div class="mt-3">{{service.getCurrentIndex()}}/10</div>
+                <button (click)="goToNextQuestion()" class="btn btn-primary">Next</button>
     
         </div>
     

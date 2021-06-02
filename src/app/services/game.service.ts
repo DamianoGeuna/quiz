@@ -39,6 +39,10 @@ export class GameService {
         this.currentQuestion = this.questions[currentIndex];
     }
 
+    getCurrentIndex(){
+        return this.counter.getValue();
+    }
+
     getAnswers() {
         const correct = this.currentQuestion.correct_answer
         const incorrect = this.currentQuestion.incorrect_answers
